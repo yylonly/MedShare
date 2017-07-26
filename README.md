@@ -1,2 +1,1 @@
-# medshare
-Distributed Sharing EHR among Different Hosptials
+MedShare: Medical Resource Sharing among Autonomous Healthcare Providers
