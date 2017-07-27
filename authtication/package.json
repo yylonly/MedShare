@@ -1,0 +1,13 @@
+{
+  "name": "authdoctor",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.14.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.0.5",
+    "mongodb": "^2.0.43",
+    "mongoskin": "^2.0.0"
+  }
+}

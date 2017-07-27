@@ -1,0 +1,9 @@
+{
+  "name": "pgd-ehr-update",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "mongodb": "^2.0.43",
+    "mongoskin": "^2.0.0"
+  }
+}
