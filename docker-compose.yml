@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+
+  ehr-sharing:
+    build: index-center/app
+    container_name: index-center
+    ports:
+      - 8081:8080
+    links:
+      - gov-auth
+      - index-center-db
+      - gov-shared
+  
+  index-center-db:
+    build: index-center/db
+    container_name: index-center-db
+  
+  gov-auth:
+    build: gov-auth/app
+    container_name: gov-auth
+    ports:
+      - 8080:8080
+    links:
+      - gov-auth-db
+  
+  gov-auth-db:
+    build: gov-auth/data
+    container_name: gov-auth-db
+
+  gov-shared:
+    build: gov-shared
+    container_name: gov-shared
