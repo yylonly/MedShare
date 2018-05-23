@@ -5,10 +5,10 @@ MedShare: Medical Resource Sharing among Autonomous Healthcare Providers
 * Docker Compose
 
 ## Install
-> git clone https://github.com/yylonly/medshare.git
-> cd medshare
-> docker-compose build
-> docker-compose up -d
+* git clone https://github.com/yylonly/medshare.git
+* cd medshare
+* docker-compose build
+* docker-compose up -d
 
 ## Test
 http://localhost:8081/net.mydreamy.privacyehr/
