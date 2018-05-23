@@ -14,3 +14,6 @@ MedShare: Medical Resource Sharing among Autonomous Healthcare Providers
 http://localhost:8081/net.mydreamy.privacyehr/
 * EHR Sharing - Username: doctorgov Password: 123456
 * Audit - username: tracker1 password:123
+
+## Deploy to Docker SWARM
+* docker stack deploy -c docker-stack.yml medshare 
