@@ -1,5 +1,7 @@
 MedShare: Medical Resource Sharing among Autonomous Healthcare Providers
 
+[![Build Status](https://travis-ci.com/yylonly/medshare.svg?branch=master)](https://travis-ci.com/yylonly/medshare)
+
 ## Pre-requirements
 * Docker CE
 * Docker Compose
