@@ -1,0 +1,27 @@
+sudo: required
+
+language: ruby
+
+services:
+  - docker
+
+before_install:
+  - docker login -u ${username} -p ${password}
+
+script:
+
+  - docker-compose build
+
+after_success:
+
+  - docker tag index-center yylonly/index-center
+  - docker tag index-center-db yylonly/index-center-db
+  - docker tag gov-auth yylonly/gov-auth
+  - docker tag gov-auth-db yylonly/gov-auth-db
+  - docker tag gov-shared yylonly/gov-shared
+
+  - docker push yylonly/index-center
+  - docker push yylonly/index-center-db
+  - docker push yylonly/gov-auth
+  - docker push yylonly/gov-auth-db
+  - docker push yylonly/gov-shared

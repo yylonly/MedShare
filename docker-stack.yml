@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+
+  ehr-sharing:
+    image: yylonly/index-center
+    ports:
+      - 8081:8080
+    networks:
+      - medshare-net
+    depends_on:
+      - gov-auth
+      - index-center-db
+      - gov-shared
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+  
+  index-center-db:
+    image: yylonly/index-center-db
+    networks:
+      - medshare-net
+  
+  gov-auth:
+    image: yylonly/gov-auth
+    networks:
+      - medshare-net
+    ports:
+      - 8080:8080
+    depends_on:
+      - gov-auth-db 
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+  gov-auth-db:
+    image: yylonly/gov-auth
+    networks:
+      - medshare-net
+
+  gov-shared:
+    image: yylonly/gov-shared
+    networks:
+      - medshare-net
+
+networks:
+  medshare-net:

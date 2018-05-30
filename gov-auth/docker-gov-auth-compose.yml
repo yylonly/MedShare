@@ -1,0 +1,13 @@
+version: "3"
+services:
+  gov-auth:
+    build: ./app
+    container_name: gov-auth
+    ports:
+      - 8080:8080
+    links:
+      - gov-auth-db
+
+  gov-auth-db:
+    build: ./data
+    container_name: gov-auth-db

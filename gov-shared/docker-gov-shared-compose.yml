@@ -1,0 +1,6 @@
+version: "3"
+services:
+
+  gov-shared:
+    build: .
+    container_name: gov-shared
