@@ -1,6 +1,14 @@
-sudo: required
+sudo: enabled
+install: true
 
-language: ruby
+language: java
+
+git:
+  depth: false
+  submodules: false
+
+jdk:
+  - oraclejdk8
 
 services:
   - docker
@@ -9,7 +17,7 @@ before_install:
   - docker login -u ${username} -p ${password}
 
 script:
-
+  - mvn clean package
   - docker-compose build
 
 after_success:
