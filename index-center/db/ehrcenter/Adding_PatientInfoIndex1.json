@@ -1,0 +1,1 @@
+{ "patient" : { "Patient_ID" : "73001", "host" : "gov-shared", "port" : "27017", "database" : "ehrgov", "collection" : "PatientInfo" } }
