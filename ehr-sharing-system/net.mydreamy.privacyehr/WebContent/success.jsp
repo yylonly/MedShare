@@ -24,13 +24,13 @@
 	<div class="container">
 		<!-- Doctor Informations -->
 		<div class="doctorinfo">
-			<h2>welcome, ${ username }</h2>
+			<%-- <h2>welcome, ${ username }</h2> --%>
 			 <a href="logout">Logout</a>  
 		</div>
 		<!-- Query Conditions -->
 		<div class="conditions">
 			<!-- Doctor conditions -->
-			<form action="queryrecord" method="post">
+			<form action="queryrecord" method="get">
 				<div>
 					Patient ID. 
 					<input id="patientid" name="patientid" placeholder="Patient ID" required autofocus>

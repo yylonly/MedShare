@@ -23,12 +23,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class EHRPrivacyController {
 	
 	/* Query the records based on the conditions */
-	@RequestMapping(value = "queryrecord", method = RequestMethod.POST)
+	@RequestMapping(value = "queryrecord", method = RequestMethod.GET)
 	public String handleQuery( HttpServletRequest request, Model model, HttpSession session){
 		
 		// 1. Get the query conditions: patient id , date, hospital id
 		String patientid = request.getParameter("patientid");
-		String userid = (String) session.getAttribute("userId"); // userid privacy method
+//		String userid = (String) session.getAttribute("userId"); // userid privacy method
+//		System.out.println(userid);
 		
 		String startDate = request.getParameter("querystartdate");
 		
@@ -36,17 +37,22 @@ public class EHRPrivacyController {
 		
 		String hospitalID = request.getParameter("hospitalid");
 		
+		System.out.println("patiendid:"+patientid);
+		System.out.println("startDate:"+startDate);
+		System.out.println("endDate:"+endDate);
+		System.out.println("hospitalID:"+hospitalID);
+		
 		// 2. Search patient node information in the Patient Index collections.
 		List<HashMap<String, String>> patientNodeInfos = HandlePatientRecordOperation.getPatientNodeRecordList(patientid);
 		
 		Map<String, String> infoNodes = HandlePatientRecordOperation.getPatientNodeInfoMap(patientid); // Patient informations node 
 		
 		// 3. Request the patient records to the nodes got from the Patient Index collections.
-		List<EHRModel> result = HandlePatientRecordOperation.getPatientRecords(patientNodeInfos, infoNodes ,patientid, userid, startDate, endDate, hospitalID);
-		System.out.println(result.get(0).toString());
+//		List<EHRModel> result = HandlePatientRecordOperation.getPatientRecords(patientNodeInfos, infoNodes ,patientid, userid, startDate, endDate, hospitalID);
+		List<EHRModel> result = HandlePatientRecordOperation.getPatientRecords(patientNodeInfos, infoNodes ,patientid, "1", startDate, endDate, hospitalID);
 		
 		// 4. Format the query results and return.
-		model.addAttribute("username", userid);
+//		model.addAttribute("username", userid);
 		model.addAttribute("ehealthrecrods", result);
 		return "success";
 	}
@@ -63,20 +69,21 @@ public class EHRPrivacyController {
 	@RequestMapping(value="detail", method = RequestMethod.GET)
 	public String handleDetail(Locale locale, String patientid,String recordid,String hospitalid, Model model, HttpSession session){
 		
-		String userid = (String) session.getAttribute("userId");
+//		String userid = (String) session.getAttribute("userId");
 		// 2. Search patient node information in the Patient Index collections.
 		List<HashMap<String, String>> patientNodeInfos = HandlePatientRecordOperation.getPatientNodeRecordList(patientid);
 		Map<String, String> infoNodes = HandlePatientRecordOperation.getPatientNodeInfoMap(patientid);
 		
 		// 3. Request the patient records to the nodes got from the Patient Index collections.
-		List<EHRModel> result = HandlePatientRecordOperation.getPatientRecords(patientNodeInfos, infoNodes ,patientid, userid, "", "", hospitalid);
+//		List<EHRModel> result = HandlePatientRecordOperation.getPatientRecords(patientNodeInfos, infoNodes ,patientid, userid, "", "", hospitalid);
+		List<EHRModel> result = HandlePatientRecordOperation.getPatientRecords(patientNodeInfos, infoNodes ,patientid, "1", "", "", hospitalid);
 		
 		for(EHRModel p : result){
 			if(recordid.trim().equals(p.getPatientRecordID().trim())){
 				model.addAttribute("record", p);
 			}
 		}
-		model.addAttribute("username", userid);
+//		model.addAttribute("username", userid);
 		
 		// Log operation
 		// 1. Attributions
@@ -89,7 +96,7 @@ public class EHRPrivacyController {
 		
 		// 2. Record log.
 		Map<String, String> logMap = new HashMap<String, String>();
-		logMap.put("UserID", userid);
+//		logMap.put("UserID", userid);
 		logMap.put("UserType", "Doctor");
 		logMap.put("IPAddress", clientip);
 		logMap.put("Operation", "Read");

@@ -125,22 +125,24 @@ public class HomeController {
 		
 		// 1. Get doctor id and password from requests.
 		String tokens = request.getParameter("tokens");
+		String test_str = request.getParameter("test_str");
+		System.out.println("test:" + test_str);
 		// 2. Generate tokens based on the secret code.
 		String CLIENT_SECRET = "PGD-EHR";
 		try {
 			
 			if(tokens == null){
-				return new ModelAndView("home").addObject("errormsg", "User name or password was wrong!");
+				return new ModelAndView("home").addObject("errormsg", "Tokens is null!");
 			}
 			
             Map<String,Object> decodedPayload = new JWTVerifier(CLIENT_SECRET,"doctor").verify(tokens);
             
             if(decodedPayload == null){
-            	return new ModelAndView("home").addObject("errormsg", "User name or password was wrong!");
+            	return new ModelAndView("home").addObject("errormsg", "Tokens parse wrong!");
             }
 
             // Get custom fields from decoded Payload
-            session.setAttribute("userId", decodedPayload.get("username"));
+//            session.setAttribute("userId", decodedPayload.get("username"));
             session.setAttribute("clientip", decodedPayload.get("clientip"));
             return new ModelAndView("success");
             
