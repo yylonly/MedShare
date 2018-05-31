@@ -34,7 +34,7 @@ services:
         constraints: [node.role == manager]
 
   gov-auth-db:
-    image: yylonly/gov-auth
+    image: yylonly/gov-auth-db
     networks:
       - medshare-net
 
