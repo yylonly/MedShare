@@ -21,4 +21,4 @@ http://localhost:8081/net.mydreamy.privacyehr-0.0.1-SNAPSHOT
 
 ## Please cite our paper about this project:
 
-* Yilong Yang, Xiaoshan Li, Nafees Qamar, Peng Liu, Wei Ke, Bingqing Shen, Zhiming Liu. MedShare: A Novel Hybrid Cloud for Medical Resource Sharing among Autonomous Healthcare Providers. IEEE Access. 2018(6). doi: 10.1109/ACCESS.2018.2865535
+* Yilong Yang, Xiaoshan Li, Nafees Qamar, Peng Liu, Wei Ke, Bingqing Shen, Zhiming Liu. [MedShare: A Novel Hybrid Cloud for Medical Resource Sharing among Autonomous Healthcare Providers](https://www.researchgate.net/publication/327027574_MedShare_A_Novel_Hybrid_Cloud_for_Medical_Resource_Sharing_among_Autonomous_Healthcare_Providers). IEEE Access. 2018(6). doi: 10.1109/ACCESS.2018.2865535
