@@ -1,7 +1,5 @@
 MedShare: Medical Resource Sharing among Autonomous Healthcare Providers
 
-[![Build Status](https://travis-ci.com/yylonly/medshare.svg?branch=master)](https://travis-ci.com/yylonly/medshare)
-
 ## Pre-requirements
 * Docker CE
 * Docker Compose
@@ -20,3 +18,7 @@ http://localhost:8081/net.mydreamy.privacyehr-0.0.1-SNAPSHOT
 
 ## Deploy to Docker SWARM
 * docker stack deploy -c docker-stack.yml medshare 
+
+## Please cite our paper about this project:
+
+* Yilong Yang, Xiaoshan Li, Nafees Qamar, Peng Liu, Wei Ke, Bingqing Shen, Zhiming Liu. MedShare: A Novel Hybrid Cloud for Medical Resource Sharing among Autonomous Healthcare Providers. IEEE Access. 2018(6). doi: 10.1109/ACCESS.2018.2865535
