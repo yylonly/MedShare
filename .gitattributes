@@ -1,3 +1,0 @@
-*.psd filter=lfs diff=lfs merge=lfs -text
-*.0000000001 filter=lfs diff=lfs merge=lfs -text
-*.0000000002 filter=lfs diff=lfs merge=lfs -text
