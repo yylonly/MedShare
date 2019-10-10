@@ -17,3 +17,17 @@ jobs:
       run: mvn package --file index-center/app/net.mydreamy.privacyehr
     - name: Build Images
       run: docker-compose build
+    - name: Docker Hub Login Images
+      run: docker login -u ${{secrets.DOCKER_HUB_USERNAME} -p ${secrets.DOCKER_HUB_PASSWORD}
+    - name: Docker image tag 
+      run: docker tag index-center yylonly/index-center
+           docker tag index-center-db yylonly/index-center-db
+           docker tag gov-auth yylonly/gov-auth
+           docker tag gov-auth-db yylonly/gov-auth-db
+           docker tag gov-shared yylonly/gov-shared
+    - name: Docker image push
+           docker push yylonly/index-center
+           docker push yylonly/index-center-db
+           docker push yylonly/gov-auth
+           docker push yylonly/gov-auth-db
+           docker push yylonly/gov-shared
