@@ -18,7 +18,7 @@ jobs:
     - name: Build Images
       run: docker-compose build
     - name: Docker Hub Login Images
-      run: docker login -u ${{secrets.DOCKER_HUB_USERNAME} -p ${secrets.DOCKER_HUB_PASSWORD}
+      run: docker login -u ${{secrets.DOCKER_HUB_USERNAME}} -p ${{secrets.DOCKER_HUB_PASSWORD}}
     - name: Docker image tag 
       run: docker tag index-center yylonly/index-center
            docker tag index-center-db yylonly/index-center-db
