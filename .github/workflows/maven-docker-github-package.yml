@@ -1,0 +1,40 @@
+name: Java CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+
+    - name: Build with Maven
+      run: mvn package --file index-center/app/net.mydreamy.privacyehr
+      
+    - name: Build Images
+      run: docker-compose build
+      
+    - name: Docker Hub Login Images
+      run: docker login docker.pkg.github.com -u yylonly -p ${{secrets.PACKAGE_TOKEN}}
+      
+    - name: Docker image tag 
+      run: |
+           docker tag index-center docker.pkg.github.com/yylonly/medshare/index-center
+           docker tag index-center-db docker.pkg.github.com/yylonly/medshare/index-center-db
+           docker tag gov-auth docker.pkg.github.com/yylonly/medshare/gov-auth
+           docker tag gov-auth-db docker.pkg.github.com/yylonly/medshare/gov-auth-db
+           docker tag gov-shared docker.pkg.github.com/yylonly/medshare/gov-shared
+           
+    - name: Docker image push
+      run: |
+           docker push docker.pkg.github.com/yylonly/medshare/index-center
+           docker push docker.pkg.github.com/yylonly/medshare/index-center-db
+           docker push docker.pkg.github.com/yylonly/medshare/gov-auth
+           docker push docker.pkg.github.com/yylonly/medshare/gov-auth-db
+           docker push docker.pkg.github.com/yylonly/medshare/gov-shared
