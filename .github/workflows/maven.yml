@@ -26,7 +26,7 @@ jobs:
            docker tag gov-auth-db yylonly/gov-auth-db
            docker tag gov-shared yylonly/gov-shared
     - name: Docker image push
-           docker push yylonly/index-center
+      run: docker push yylonly/index-center
            docker push yylonly/index-center-db
            docker push yylonly/gov-auth
            docker push yylonly/gov-auth-db
