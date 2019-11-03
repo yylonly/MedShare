@@ -3,7 +3,7 @@ version: "3"
 services:
 
   ehr-sharing:
-    image: yylonly/index-center
+    image: docker.pkg.github.com/yylonly/medshare/index-center
     ports:
       - 8081:8080
     networks:
@@ -17,12 +17,12 @@ services:
         constraints: [node.role == manager]
   
   index-center-db:
-    image: yylonly/index-center-db
+    image: docker.pkg.github.com/yylonly/medshare/index-center-db
     networks:
       - medshare-net
   
   gov-auth:
-    image: yylonly/gov-auth
+    image: docker.pkg.github.com/yylonly/medshare/gov-auth
     networks:
       - medshare-net
     ports:
@@ -34,12 +34,12 @@ services:
         constraints: [node.role == manager]
 
   gov-auth-db:
-    image: yylonly/gov-auth-db
+    image: docker.pkg.github.com/yylonly/medshare/gov-auth-db
     networks:
       - medshare-net
 
   gov-shared:
-    image: yylonly/gov-shared
+    image: docker.pkg.github.com/yylonly/medshare/gov-shared
     networks:
       - medshare-net
 
