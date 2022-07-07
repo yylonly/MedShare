@@ -111,7 +111,7 @@
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-expression</artifactId>
-    <version>4.1.4.RELEASE</version>
+    <version>5.2.21.RELEASE</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
 <dependency>
@@ -190,7 +190,7 @@
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-expression</artifactId>
-    <version>4.1.4.RELEASE</version>
+    <version>5.2.21.RELEASE</version>
 </dependency>
 
   	
